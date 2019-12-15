@@ -20,6 +20,7 @@ body {
     overflow:hidden;
     font-family: 'Righteous', normal;
     font-size: 1rem;
+    -webkit-overflow-scrolling: touch;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
