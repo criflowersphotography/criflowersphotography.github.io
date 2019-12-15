@@ -106,7 +106,7 @@ h1 {
   background-size: contain;
 }
 .container {
-	position:absolute;
+	position:absolute!important;
 	overflow-y:auto;
 	margin-top: 15vh;
   max-width: 100vw;
