@@ -4,12 +4,10 @@ for(var i = 0; i < cards.length; i++){
     var target2 = Math.floor(Math.random() * cards.length -1) +1;
     cards.eq(target).before(cards.eq(target2));
 }
-$(document).ready(function(){
-	window.addEventListener("load",function(){
-		setTimeout(function(){
-			window.scrollTo(0, 1);
-		}, 0);
-	});
+$(".container").scroll(function(){
+	setTimeout(function(){
+		window.scrollTo(0, 1);
+	}, 0);
 });
 function showabout(){
     $(".container_about").css("display","inherit");
