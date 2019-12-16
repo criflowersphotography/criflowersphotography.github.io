@@ -76,6 +76,8 @@ h1 {
   margin-left:-5px;
 }
 .header {
+	position: -webkit-sticky;
+  position: sticky;
 	top:0;
 	height: 15vh;
   width: 100vw;
@@ -545,7 +547,8 @@ a:visited:hover {
     width:100vw;
     height:10vh;
 		overflow:hidden;
-		position:fixed;
+		position: -webkit-sticky;
+  	position: sticky;
     z-index:5;
     bottom:0;
     background:#000;
