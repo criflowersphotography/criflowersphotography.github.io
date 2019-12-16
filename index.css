@@ -545,6 +545,7 @@ a:visited:hover {
     width:100vw;
     height:10vh;
 		overflow:hidden;
+		position:fixed;
     z-index:5;
     bottom:0;
     background:#000;
