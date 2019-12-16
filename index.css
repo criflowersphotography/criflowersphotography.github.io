@@ -11,6 +11,7 @@
 }
 
 body {
+    overflow:hidden;	
     padding:0px;
     margin:0px;
     background:linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('img/background.jpg') center center;
@@ -541,7 +542,8 @@ a:visited:hover {
     color:#fff;
 }*/
 .footer {
-		display: flex;
+	padding-top:1vh;
+	display: flex;
     display:-webkit-flex;
     justify-content: center;
     width:100vw;
