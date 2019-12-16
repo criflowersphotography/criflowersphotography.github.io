@@ -76,7 +76,7 @@ h1 {
   margin-left:-5px;
 }
 .header {
-	position:fixed;
+	position:absolute;
 	top:0;
 	right:0;
 	left:0;
@@ -556,7 +556,7 @@ a:visited:hover {
 	right:0;
 	left:0;
 	overflow:hidden;
-    position:fixed;
+    position:absolute;
     padding-bottom:2vh;
     z-index:5;
     bottom:0;
