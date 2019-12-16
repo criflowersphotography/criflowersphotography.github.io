@@ -139,7 +139,7 @@ function closegallery(){
     $("#middle").fadeTo(1000,1);
     $("#footer").fadeTo(1000,1);
 }
-function showwork(){
+/*function showwork(){
     $("#work_container").css("display","inherit");
     $("#work_container").addClass("animated slideInRight");
     $("#work_container").fadeTo(1000,1);
@@ -178,7 +178,7 @@ function closecontact(){
     $("#contact_container").fadeTo(800,0);
     $("#middle").fadeTo(1000,1);
     $("#footer").fadeTo(1000,1);
-}
+}*/
 
 $(document).ready(function(){
 	setTimeout(function(){
