@@ -180,13 +180,16 @@ function closecontact(){
     $("#footer").fadeTo(1000,1);
 }
 
-	
+$(document).ready(function(){
+	setTimeout(function(){
 		$("#loading").addClass("animated fadeOut");
-		$(document).ready(function(){
+		setTimeout(function(){
 			$("#loading").removeClass("animated fadeOut");
 		  $("#loading").css("display","none");
 		  $("#box").css("display","none");
-		});
+		},1500);
+	},2000);
+});
 
 /*$(document).ready(function(){
   $('.carousel').on('mouseenter',function() {
