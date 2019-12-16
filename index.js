@@ -4,11 +4,11 @@ for(var i = 0; i < cards.length; i++){
     var target2 = Math.floor(Math.random() * cards.length -1) +1;
     cards.eq(target).before(cards.eq(target2));
 }
-$(".container").scroll(function(){
+/*$(".container").scroll(function(){
 	setTimeout(function(){
 		window.scrollTo(0, 1);
 	}, 0);
-});
+});*/
 function showabout(){
     $(".container_about").css("display","inherit");
     $(".container_about").addClass("animated slideInLeft");
@@ -180,14 +180,13 @@ function closecontact(){
     $("#footer").fadeTo(1000,1);
 }
 
-setTimeout(function(){
-	$("#loading").addClass("animated fadeOut");
-	setTimeout(function(){
-		$("#loading").removeClass("animated fadeOut");
-	  $("#loading").css("display","none");
-	  $("#box").css("display","none");
-	},1500);
-},2000);
+	
+		$("#loading").addClass("animated fadeOut");
+		$(document).ready(function(){
+			$("#loading").removeClass("animated fadeOut");
+		  $("#loading").css("display","none");
+		  $("#box").css("display","none");
+		});
 
 /*$(document).ready(function(){
   $('.carousel').on('mouseenter',function() {
