@@ -32,7 +32,7 @@ function showabout(){
     },800);
 }
 function closeabout(){
-		$(".info").css("display","inherit");
+		$(".info").css("display","block");
 		$(".showhidemenu").css({"display":"flex","display":"-webkit-flex"});
 		$(".right_menu").css({"display":"flex","display":"-webkit-flex"});
     $(".container_about").addClass("animated slideOutLeft");
