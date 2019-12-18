@@ -181,7 +181,7 @@ h1 {
   justify-content: flex-end;
   position: fixed;
   width: 10em;
-  height: 5.5vh;
+  height: 2.1em;
   top: 30px;
   border-radius: 5px;
   left: -8em;
@@ -196,10 +196,10 @@ h1 {
 		left: -1.75em;
 }
 span {
-  padding-right: 1vw;
+  padding-right: 0.75em;
 }
 i.fas.fa-user-circle {
-  margin-right: 0.75vw;
+  margin-right: 0.65em;
 }
 .right_menu{
   display: flex;
