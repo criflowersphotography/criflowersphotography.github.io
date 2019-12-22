@@ -26,6 +26,8 @@ function showabout(){
         $(".info").removeClass("animated slideOutRight");
         $(".showhidemenu").removeClass("animated slideOutRight");
         $(".right_menu").removeClass("animated slideOutRight");
+        $(".header").css("display","none");
+        $(".container").css("display","none");
         $(".info").css("display","none");
         $(".showhidemenu").css("display","none");
         $(".right_menu").css("display","none");
@@ -35,6 +37,8 @@ function closeabout(){
 		$(".info").css({"display":"flex","display":"-webkit-flex"});
 		$(".showhidemenu").css({"display":"flex","display":"-webkit-flex"});
 		$(".right_menu").css({"display":"flex","display":"-webkit-flex"});
+		$(".header").css({"display":"flex","display":"-webkit-flex"});
+    $(".container").css({"display":"flex","display":"-webkit-flex"});
     $(".container_about").addClass("animated slideOutLeft");
     $(".info").addClass("animated slideInRight");
     $(".showhidemenu").addClass("animated slideInRight");
