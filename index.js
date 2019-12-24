@@ -18,14 +18,12 @@ function showabout() {
 }
 function closeabout() {
 	$(".container_about").css("position", "absolute");
-	$(".container_about").fadeOut(800, function(){
+	$(".container_about").addClass("animated fadeOutLeft").fadeOut(800, function() {
 		$(".container_about").css("position", "");
 	});
-	$(".container_about").addClass("animated fadeOutLeft");
-	$(".info, .showhidemenu").addClass("animated fadeInRight");
-	$(".header, .container, .info, .showhidemenu").fadeTo(800,1, function(){
+	$(".info, .showhidemenu, .header, .container").addClass("animated fadeInRight").fadeTo(800,1, function(){
 		$(".container_about").removeClass("animated fadeOutLeft");
-		$(".info, .showhidemenu").removeClass("animated fadeInRight");
+		$(".info, .showhidemenu, .header, .container").removeClass("animated fadeInRight");
 	});
 }
 var flag=true;
