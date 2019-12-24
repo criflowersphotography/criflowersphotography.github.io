@@ -8,7 +8,7 @@ function showabout() {
 	$(".container_about").css("position", "absolute");
 	$(".header, .container, .info, .showhidemenu").fadeOut(800).addClass("animated fadeOutRight");
 	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
-	$(".container_about").scrollTop(0);
+	$(window).scrollTop(0);
 	$(".container_about").addClass("animated fadeInLeft");
 	$(".container_about").fadeTo(800,1, function() {
 		$(".container_about").css("position", "");
@@ -153,7 +153,7 @@ function closecontact(){
     $("#footer").fadeTo(1000,1);
 }*/
 
-$(window).ready(function(){
+$(window).on( "load", function(){
 	$("#loading").addClass("animated fadeOut");
 	setTimeout(function(){
 		$(".info").addClass("animated bounceInLeft");
