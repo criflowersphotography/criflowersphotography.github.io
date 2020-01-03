@@ -395,8 +395,7 @@ img {
 	flex-direction:column;
   min-width:100%;
   padding:5vh 5vw;
-  position: sticky;
-  margin-bottom:3vh;
+  position: inherit;
   background: rgba(0, 0, 0, 0.5);
   color:#fff;
   overflow-y:auto;

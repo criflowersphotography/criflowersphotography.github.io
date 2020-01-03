@@ -6,7 +6,8 @@ for(var i = 0; i < cards.length; i++){
 }
 function showabout() {
 	$(".container_about").css("position", "absolute");
-	$(".header, .container, .info, .showhidemenu").fadeOut(800).addClass("animated fadeOutRight");
+	$(".header, .container, .showhidemenu").fadeOut(800).addClass("animated fadeOutRight");
+	$(".info").fadeOut(400).addClass("animated fadeOutRight");
 	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
 	$(window).scrollTop(0);
 	$(".container_about").addClass("animated fadeInLeft");
@@ -21,7 +22,7 @@ function closeabout() {
 	$(".container_about").addClass("animated fadeOutLeft").fadeOut(800, function() {
 		$(".container_about").css("position", "");
 	});
-	$(".info, .showhidemenu, .header, .container").addClass("animated fadeInRight").fadeTo(800,1, function(){
+	$(".info, .showhidemenu, .header, .container").addClass("animated fadeInRight").fadeTo(1000,1, function(){
 		$(".container_about").removeClass("animated fadeOutLeft");
 		$(".info, .showhidemenu, .header, .container").removeClass("animated fadeInRight");
 	});
