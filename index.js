@@ -18,15 +18,10 @@ function showabout() {
 }
 function closeabout() {
 	$(".container_about").addClass("animated fadeOutLeft").fadeOut(800);
-	$(".showhidemenu, .header, .container").addClass("animated fadeInRight").fadeIn(800, function(){
+	$(".info, .showhidemenu, .header, .container").addClass("animated fadeInRight").fadeIn(800, function(){
 		$(".container_about").removeClass("animated fadeOutLeft");
-		$(".showhidemenu, .header, .container").removeClass("animated fadeInRight");
+		$(".info, .showhidemenu, .header, .container").removeClass("animated fadeInRight");
 	});
-	setTimeout(function(){
-		$(".info").addClass("animated fadeInRight").fadeIn(800, function(){
-			$(".info").removeClass("animated fadeInRight");
-		});
-	},400);
 }
 var flag=true;
 var menuopened=false;
