@@ -53,9 +53,10 @@ h1 {
   text-decoration: underline;
 }
 #loading {
+  top:0;
   width: 100vw;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   background:#000;
   z-index: 9999;
   display: flex;
