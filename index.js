@@ -1,8 +1,10 @@
 var cards = $(".img-wrap");
+var cards2 = $(".carousel-item");
 for(var i = 0; i < cards.length; i++){
-    var target = Math.floor(Math.random() * cards.length -1) + 1;
+    var target = Math.floor(Math.random() * cards.length -1) +1;
     var target2 = Math.floor(Math.random() * cards.length -1) +1;
     cards.eq(target).before(cards.eq(target2));
+    cards2.eq(target).before(cards2.eq(target2));
 }
 function showabout() {
 	$(".container_about").css("position", "absolute");
@@ -74,6 +76,12 @@ function concertsImgs(){
 	$(".concertsImgs").css("display","block");
 	$(".concertsImgs").css("opacity","0");
 	$(".concertsImgs").fadeTo(400,1);
+	/*var listcards = $(".img-wrap");
+	var listcarousel = $(".carousel-item");
+	for(var i = 0; i < cards.length; i++){
+    listcards.eq(i);
+    listcarousel.eq(i);
+	}*/
 }
 function landscapesImgs(){
 	$(".concertsImgs, .sportsImgs, .portraitsImgs").css("display","none");
@@ -102,17 +110,14 @@ function portraitsImgs(){
     },800);
     $("#middle").fadeTo(800,0);
     $("#footer").fadeTo(800,0);
+}*/
+
+function closeModalGallery(){
+	$("#ModalImgs").modal('hide');
+	//$('#gallery').carousel('pause');
 }
-function closegallery(){
-    $("#concerts_container").addClass("animated slideOutRight");
-    setTimeout(function(){
-        $("#concerts_container").removeClass("animated slideOutRight");
-        $("#concerts_container").css("display","none");
-    },800);
-    $("#concerts_container").fadeTo(800,0);
-    $("#middle").fadeTo(1000,1);
-    $("#footer").fadeTo(1000,1);
-}
+
+/*
 function showwork(){
     $("#work_container").css("display","inherit");
     $("#work_container").addClass("animated slideInRight");
@@ -173,10 +178,18 @@ $(window).on( "load", function(){
 	},800);
 });
 
-/*$(document).ready(function(){
-  $('.carousel').on('mouseenter',function() {
-  $(this).carousel('cycle');
-  }).on('mouseleave', function() {
-  $(this).carousel('pause');
-  });
-});*/
+//$(document).carousel('pause');
+
+$('.img-wrap').click(function() {
+	var whichSrc = $(this).find('img').attr("src");
+  $('.carousel-item').removeClass('active');
+  $('img[src="'+whichSrc+'"]').parent('div.carousel-item').addClass('active');
+  //$('#gallery').carousel('cycle');
+  /*$(document).ready(function(){
+  	$('.carousel').on('mouseenter',function() {
+  		$(this).carousel('cycle');
+  	}).on('mouseleave', function() {
+  		$(this).carousel('pause');
+  	});
+	});*/
+});

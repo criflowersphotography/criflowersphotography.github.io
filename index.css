@@ -10,14 +10,6 @@
     font-style: normal;
 }
 
-/*html { 
-  background: linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('img/background.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}*/
-
 body {
 		margin:0;
 		padding:0;
@@ -54,12 +46,12 @@ body {
     align-items:center;
     z-index:5;
 }
-img{
+.header img{
 	width: 40vh;
 }
 h1 {
-    font-size: 3.5rem;
-    text-decoration: underline;
+  font-size: 3.5rem;
+  text-decoration: underline;
 }
 #loading {
   width: 100vw;
@@ -120,6 +112,7 @@ h1 {
   position: relative;
   text-align: center;
   font-size: small;
+  cursor: pointer;
 }
 .img-wrap:after {
   content: '';
@@ -237,7 +230,7 @@ i.fas.fa-user-circle {
 		cursor:pointer;
 }
 .right_menu a:hover {
-		text-decoration: overline underline!important;
+		background: linear-gradient(-90deg, black, transparent);
 }
 /*i.fas.fa-times-circle {
     position: fixed;
@@ -357,29 +350,22 @@ img {
     left: 0;
     bottom: 0;
     padding-top: 5%;
-}
+}*/
 .angle_right {
-		color:#fff;
-		position:fixed;
-		right: 1em;
-  	bottom: 1em;
-  	cursor: pointer;
-	  font-size: 1.8em;
-	  z-index:10;
-	  transition:0.4s ease-in-out;
+    color: #fff;
+    position: absolute;
+    display: flex;
+    right: 1em;
+    top: 1em;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+    text-shadow: 0 0 0.3rem rgb(250,50,50);
 }
 .angle_right:hover {
 		color:rgb(255,50,50);
+		text-shadow: 0 0 0.8rem #fff;
 }
-#closegallery {
-    font-size: 0.4em;
-    position: absolute;
-    margin: 0.4em 0 0 0;
-    right: 0em;
-    width: 6em;
-    font-family: Righteous;
-    font-weight: normal;
-}
+/*
 .container_page_concerts {
 	min-width: 100%;
 	opacity: 0;
@@ -427,14 +413,14 @@ a:visited:hover {
 }
 .container_page section {
     margin:8vh 0px;
-}
+}*/
 .carousel-control-next, .carousel-control-prev {
-		position: absolute;
-    width: 3%;
-    height: 6%;
+    position: absolute;
+    width: 2%;
+    height: 4%;
     top: 50%;
 }
-
+/*
 a:link {
 	color:#fff;
 }
@@ -559,6 +545,17 @@ a:visited:hover {
     width:100vw;
     height:100vh;
 }*/
+
+.modal-dialog {
+	max-width: 70%;
+}
+.modal-content {
+	background-color: rgba(255,50,50,0.4);
+}
+.modal-body {
+	padding:4px;
+}
+
 ::-webkit-scrollbar {
     width:4px;
     height:4px;
@@ -674,10 +671,13 @@ a:visited:hover {
 	.social {
 		margin: 0px 0.6em;
 	}
-}
-@media (max-height: 560px){
-	body {
-		background:linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('img/background.jpg') center center;
-		background-size:cover;
-	}
 }*/
+@media (max-width: 600px){
+	.modal-dialog {
+    max-width: 100%;
+    margin: initial;
+	}
+	.angle_right {
+		top: initial;
+    bottom: -2em;
+}
