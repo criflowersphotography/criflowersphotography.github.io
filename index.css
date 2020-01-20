@@ -56,7 +56,7 @@ h1 {
   top:0;
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   background:#000;
   z-index: 9999;
   display: flex;
