@@ -7,24 +7,18 @@ for(var i = 0; i < cards.length; i++){
     cards2.eq(target).before(cards2.eq(target2));
 }
 function showabout() {
-	$(".container_about").css("position", "absolute");
+	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
 	$(".header, .container, .showhidemenu").fadeOut(800).addClass("animated fadeOutRight");
 	$(".info").fadeOut(400).addClass("animated fadeOutRight");
-	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
 	$(window).scrollTop(0);
-	$(".container_about").addClass("animated fadeInLeft");
-	$(".container_about").fadeTo(800,1, function() {
-		$(".container_about").css("position", "");
+	$(".container_about").addClass("animated fadeInLeft").fadeTo(800,1, function(){
 		$(".container_about").removeClass("animated fadeInLeft");
 		$(".header, .container, .info, .showhidemenu").removeClass("animated fadeOutRight");
 	});
 }
 function closeabout() {
-	$(".container_about").css("position", "absolute");
-	$(".container_about").addClass("animated fadeOutLeft").fadeOut(800, function() {
-		$(".container_about").css("position", "");
-	});
-	$(".info, .showhidemenu, .header, .container").addClass("animated fadeInRight").fadeTo(1000,1, function(){
+	$(".container_about").addClass("animated fadeOutLeft").fadeOut(800);
+	$(".info, .showhidemenu, .header, .container").addClass("animated fadeInRight").fadeTo(800,1, function(){
 		$(".container_about").removeClass("animated fadeOutLeft");
 		$(".info, .showhidemenu, .header, .container").removeClass("animated fadeInRight");
 	});

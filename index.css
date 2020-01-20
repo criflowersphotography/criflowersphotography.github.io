@@ -40,8 +40,7 @@ body {
 		width:100%;
     display: flex;
     display:-webkit-flex;
-  	position: -webkit-sticky;
-  	position: sticky;
+  	position: fixed;
     justify-content: center;
     align-items:center;
     z-index:5;
@@ -98,7 +97,8 @@ h1 {
   margin-left:-5px;
 }
 .container {
-	top: 15vh;
+	margin-top: 15vh;
+  margin-bottom: 10vh;
   display: flex;
   display:-webkit-flex;
 	max-width: 100vw;
@@ -376,12 +376,13 @@ img {
 	font-size:1.3em;
 }*/
 .container_about {
+	opacity:0;
 	top:0;
 	left:0;
 	flex-direction:column;
   min-width:100%;
   padding:5vh 5vw;
-  position: inherit;
+  position: absolute;
   background: rgba(0, 0, 0, 0.5);
   color:#fff;
   overflow-y:auto;
@@ -528,8 +529,7 @@ a:visited:hover {
     display:-webkit-flex;
     justify-content: center;
     align-items: center;
-    position: -webkit-sticky;
-  	position: sticky;
+  	position: fixed;
     width:100%;
     height:10vh;
     z-index:5;
