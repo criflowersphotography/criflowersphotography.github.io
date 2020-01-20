@@ -9,7 +9,7 @@ for(var i = 0; i < cards.length; i++){
 function showabout() {
 	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
 	$(".header, .container, .showhidemenu").fadeOut(800).addClass("animated fadeOutRight");
-	$(".info").fadeOut(400).addClass("animated fadeOutRight");
+	$(".info").fadeOut(200).addClass("animated fadeOutRight");
 	$(window).scrollTop(0);
 	$(".container_about").addClass("animated fadeInLeft").fadeTo(800,1, function(){
 		$(".container_about").removeClass("animated fadeInLeft");
@@ -18,10 +18,14 @@ function showabout() {
 }
 function closeabout() {
 	$(".container_about").addClass("animated fadeOutLeft").fadeOut(800);
-	$(".info, .showhidemenu, .header, .container").addClass("animated fadeInRight").fadeIn(800, function(){
+	$(".showhidemenu, .header, .container").addClass("animated fadeInRight").fadeIn(800, function(){
 		$(".container_about").removeClass("animated fadeOutLeft");
-		$(".info, .showhidemenu, .header, .container").removeClass("animated fadeInRight");
 	});
+	setTimeout(function(){
+		$(".info").addClass("animated fadeInRight").fadeIn(800, function(){
+			$(".info, .showhidemenu, .header, .container").removeClass("animated fadeInRight");
+		});
+	},400);
 }
 var flag=true;
 var menuopened=false;
