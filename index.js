@@ -10,8 +10,8 @@ function showabout() {
 	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
 	$(".header, .container, .showhidemenu").fadeOut(800).addClass("animated fadeOutRight");
 	$(".info").fadeOut(200).addClass("animated fadeOutRight");
-	$(window).scrollTop(0);
 	$(".container_about").addClass("animated fadeInLeft").fadeTo(800,1, function(){
+		$(window).scrollTop(0);
 		$(".container_about").removeClass("animated fadeInLeft");
 		$(".header, .container, .info, .showhidemenu").removeClass("animated fadeOutRight");
 	});
