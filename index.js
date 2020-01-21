@@ -18,7 +18,7 @@ function showabout() {
 }
 function closeabout() {
 	$(".container_about").addClass("animated fadeOutLeft").fadeOut(800);
-	$(".info, .showhidemenu, .header, .container").addClass("animated fadeInRight").fadeIn(800, function(){
+	$(".info, .showhidemenu, .header, .container").addClass("animated fadeInRight").fadeTo(800,1, function(){
 		$(".container_about").removeClass("animated fadeOutLeft");
 		$(".info, .showhidemenu, .header, .container").removeClass("animated fadeInRight");
 	});
