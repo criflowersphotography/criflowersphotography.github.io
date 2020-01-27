@@ -6,6 +6,21 @@ for(var i = 0; i < cards.length; i++){
     cards.eq(target).before(cards.eq(target2));
     cards2.eq(target).before(cards2.eq(target2));
 }
+
+$(window).on("load", function(){
+	$("#loading").fadeOut(800, function(){
+		$(".info").addClass("animated bounceInLeft");
+		$(".showhidemenu, .right_menu").addClass("animated bounceInRight");
+		$(".social").addClass("animated zoomIn");
+		setTimeout(function(){
+			$(".info").removeClass("animated bounceInLeft");
+			$(".showhidemenu, .right_menu").removeClass("animated bounceInRight");
+			$(".social").removeClass("animated zoomIn");
+	  	$("#box").css("display","none");
+		},3000);
+	});
+});
+
 function showabout() {
 	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
 	$(".header, .container, .showhidemenu").fadeOut(800).addClass("animated fadeOutRight");
@@ -108,7 +123,7 @@ function portraitsImgs(){
 
 function closeModalGallery(){
 	$("#ModalImgs").modal('hide');
-	//$('#gallery').carousel('pause');
+	$('.carousel').carousel('pause');
 }
 
 /*
@@ -153,37 +168,13 @@ function closecontact(){
     $("#footer").fadeTo(1000,1);
 }*/
 
-$(window).on( "load", function(){
-	$("#loading").addClass("animated fadeOut");
-	setTimeout(function(){
-		$(".info").addClass("animated bounceInLeft");
-		$(".showhidemenu").addClass("animated bounceInRight");
-		$(".right_menu").addClass("animated bounceInRight");
-		$(".social").addClass("animated zoomIn");
-		setTimeout(function(){
-			$("#loading").removeClass("animated fadeOut");
-			$(".info").removeClass("animated bounceInLeft");
-			$(".showhidemenu").removeClass("animated bounceInRight");
-			$(".right_menu").removeClass("animated bounceInRight");
-			$(".social").removeClass("animated zoomIn");
-	  	$("#loading").css("display","none");
-	  	$("#box").css("display","none");
-		},3000);
-	},800);
-});
-
-//$(document).carousel('pause');
-
+var indexCarousel = 0;
 $('.img-wrap').click(function() {
 	var whichSrc = $(this).find('img').attr("src");
   $('.carousel-item').removeClass('active');
+  $('.carousel-indicators').children().removeClass('active');
   $('img[src="'+whichSrc+'"]').parent('div.carousel-item').addClass('active');
-  //$('#gallery').carousel('cycle');
-  /*$(document).ready(function(){
-  	$('.carousel').on('mouseenter',function() {
-  		$(this).carousel('cycle');
-  	}).on('mouseleave', function() {
-  		$(this).carousel('pause');
-  	});
-	});*/
+  indexCarousel = $(this).index();
+  $(document).find('li[data-slide-to="'+indexCarousel+'"]').addClass('active');
+  $('.carousel').carousel('cycle');
 });
