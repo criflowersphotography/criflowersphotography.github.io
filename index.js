@@ -7,11 +7,23 @@ for(var i = 0; i < cards.length; i++){
     cards2.eq(target).before(cards2.eq(target2));
 }
 
+$(".social").hide();
+
 $(window).on("load", function(){
 	$("#loading").fadeOut(800, function(){
+		$('#b1').addClass('animated bounceOutLeft')
+		$('#b6').addClass('animated bounceOutRight');
+		setTimeout(function(){
+			$('#b2').addClass('animated bounceOutLeft');
+			$('#b5').addClass('animated bounceOutRight');
+		},100);
+		setTimeout(function(){
+			$('#b3').addClass('animated bounceOutLeft');
+			$('#b4').addClass('animated bounceOutRight');
+		},200);
 		$(".info").addClass("animated bounceInLeft");
 		$(".showhidemenu, .right_menu").addClass("animated bounceInRight");
-		$(".social").addClass("animated zoomIn");
+		$(".social").show().addClass("animated zoomIn");
 		setTimeout(function(){
 			$(".info").removeClass("animated bounceInLeft");
 			$(".showhidemenu, .right_menu").removeClass("animated bounceInRight");
