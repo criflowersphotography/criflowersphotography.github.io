@@ -7,6 +7,24 @@ for(var i = 0; i < cards.length; i++){
     cards2.eq(target).before(cards2.eq(target2));
 }
 
+let claz = '';
+$('#gallery').on('slide.bs.carousel', function (ev) {
+	if (claz != '') {
+		nextGivenClassElement(claz, ev.relatedTarget, ev.to);
+	}
+});
+
+function nextGivenClassElement(claz, el, to) {
+	const src = $(el).children('img').attr('src');
+
+	console.log('src -> ' + src + ', to -> ' + to);
+
+	if(src && !src.includes(claz)) {		
+		nextGivenClassElement(claz, $('#gallery').carousel(to + 1), (to + 1));
+		$('#gallery').carousel('previous');
+	}
+}
+
 $(".social").hide();
 
 $(window).on("load", function(){
@@ -86,42 +104,61 @@ function right_menu_mouse(){
 		flag=!flag
 	}
 }
+
+function hideIndicators(claz) {
+	$('.carousel-item').each((index, el) => { 
+		if (claz != '' && !$(el).children('img').attr('src').includes(claz)) {
+			$('.carousel-indicators').find('li[data-slide-to="' + index + '"]').hide();
+		} else {
+			$('.carousel-indicators').find('li[data-slide-to="' + index + '"]').show();
+		}
+	});
+}
 	
 function allImgs(){
+	claz = '';
+	hideIndicators(claz);
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").css("display","block");
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").css("opacity","0");
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").fadeTo(400,1);
 }
+
 function concertsImgs(){
+	claz = 'Concerts';
+	hideIndicators(claz);
 	$(".landscapesImgs, .sportsImgs, .portraitsImgs").css("display","none");
 	$(".concertsImgs").css("display","block");
 	$(".concertsImgs").css("opacity","0");
 	$(".concertsImgs").fadeTo(400,1);
-	/*var listcards = $(".img-wrap");
-	var listcarousel = $(".carousel-item");
-	for(var i = 0; i < cards.length; i++){
-    listcards.eq(i);
-    listcarousel.eq(i);
-	}*/
 }
+
 function landscapesImgs(){
+	claz = 'Landscapes';
+	hideIndicators(claz);
 	$(".concertsImgs, .sportsImgs, .portraitsImgs").css("display","none");
 	$(".landscapesImgs").css("display","block");
 	$(".landscapesImgs").css("opacity","0");
 	$(".landscapesImgs").fadeTo(400,1);
 }
+
 function sportsImgs(){
+	claz = 'Sports';
+	hideIndicators(claz);
 	$(".concertsImgs, .landscapesImgs, .portraitsImgs").css("display","none");
 	$(".sportsImgs").css("display","block");
 	$(".sportsImgs").css("opacity","0");
 	$(".sportsImgs").fadeTo(400,1);
 }
+
 function portraitsImgs(){
+	claz = 'Portraits';
+	hideIndicators(claz);
 	$(".concertsImgs, .landscapesImgs, .sportsImgs").css("display","none");
 	$(".portraitsImgs").css("display","block");
 	$(".portraitsImgs").css("opacity","0");
 	$(".portraitsImgs").fadeTo(400,1);
 }
+
 /*function showgallery(){
     $("#concerts_container").css("display","inherit");
     $("#concerts_container").addClass("animated slideInRight");
