@@ -8,7 +8,39 @@ for(var i = 0; i < cards.length; i++){
 }
 
 let claz = '';
-$('#gallery').on('slide.bs.carousel', function (ev) {
+var arrayTotal = $(".carousel-item").get();
+var arrayConcerts = [];
+var arrayLandscapes = [];
+var arrayPortraits = [];
+var arraySports = [];
+var totImg = $(".carousel-item").length;
+for (i = 0; i < totImg; i++) {
+	const src = arrayTotal[i].children[0].src;
+	if(src.includes('Concerts')) {
+		arrayConcerts.push(i);
+	}
+	if(src.includes('Landscapes')) {
+		arrayLandscapes.push(i);
+	}
+	if(src.includes('Portraits')) {
+		arrayPortraits.push(i);
+	}
+	if(src.includes('Sports')) {
+		arraySports.push(i);
+	}
+}
+
+$(".img-wrap").click(function() {
+	if (claz = 'Concerts') {
+		$("#gallery").carousel("pause");
+	  var lengthConcerts = arrayConcerts.length;
+	  for (i = 0; i < lengthConcerts; i++) {
+	    $("#gallery").carousel(arrayConcerts[i]);
+	  }
+	}
+});
+
+/*$('#gallery').on('slid.bs.carousel', function (ev) {
 	if (claz != '') {
 		nextGivenClassElement(claz, ev.relatedTarget, ev.to);
 	}
@@ -21,9 +53,14 @@ function nextGivenClassElement(claz, el, to) {
 
 	if(src && !src.includes(claz)) {		
 		nextGivenClassElement(claz, $('#gallery').carousel(to + 1), (to + 1));
-		$('#gallery').carousel('previous');
+		//$('#gallery').carousel('previous');
 	}
-}
+	else {
+		$('#gallery').carousel(to);
+	}
+}*/
+
+//data-slide-to="2"
 
 $(".social").hide();
 
