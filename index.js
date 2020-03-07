@@ -159,3 +159,11 @@ function portraitsImgs(){
 function closeModalGallery(){
 	$("#ModalImgs").modal('hide');
 }
+
+$('.img-wrap').click(function() {
+	var whichSrc = $(this).find('img').attr("src");
+  	$('.carousel-item').removeClass('active');
+  	$('.carousel-indicators').children().removeClass('active');
+  	$('img[src="'+whichSrc+'"]').parent('div.carousel-item').addClass('active');
+  	$(document).find('li[data-slide-to="'+$(this).index()+'"]').addClass('active');
+});
