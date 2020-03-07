@@ -6,12 +6,7 @@ $(".img-wrap").click(function() {
 			const title = $(element).children('h4').text();
 			const description = $(element).children('p').text();
 			$(".carousel-indicators").append("<li data-target='#gallery' data-slide-to='"+index+"'></li>");
-			$(".carousel-inner").append("<div class='carousel-item'>"+
-					"<img class='d-block w-100' src='"+src+"' alt='"+alt+"'/>"+
-					"<div class='carousel-caption d-none d-md-block'>"+
-						"<h3>"+title+"</h3><p>"+description+"</p>"+
-					"</div>"+
-				"</div>");
+			$(".carousel-inner").append("<div class='carousel-item'><img class='d-block w-100' src='"+src+"' alt='"+alt+"'/><div class='carousel-caption d-none d-md-block'><h3>"+title+"</h3><p>"+description+"</p></div></div>");
 		});
 	}
 	$('.carousel').carousel('cycle');
