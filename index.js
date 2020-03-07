@@ -14,6 +14,7 @@ $(".img-wrap").click(function() {
 				"</div>");
 		});
 	}
+	$('#gallery').carousel('cycle');
 });
 
 var cards = $(".img-wrap");
