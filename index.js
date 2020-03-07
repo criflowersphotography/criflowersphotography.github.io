@@ -165,5 +165,5 @@ $('.img-wrap').click(function() {
   	$('.carousel-item').removeClass('active');
   	$('.carousel-indicators').children().removeClass('active');
   	$('img[src="'+whichSrc+'"]').parent('div.carousel-item').addClass('active');
-  	$(document).find('li[data-slide-to="'+$(this).index()+'"]').addClass('active');
+	$($('.carousel-indicators').children()[$(".carousel-item.active").index()]).addClass('active');
 });
