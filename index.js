@@ -7,12 +7,12 @@ $(".img-wrap").click(function() {
 		$(".carousel-inner").empty();
 		
 		const imgWrapClass = 
-			claz === 'Concerts' ? 'concertsImgs' :
-			claz === 'Portraits' ? 'portraitsImgs' :
-			claz === 'Landscapes' ? 'landscapesImgs' :
-			claz === 'Sports' ? 'sportsImgs' : '';
+			claz === 'Concerts' ? '.concertsImgs' :
+			claz === 'Portraits' ? '.portraitsImgs' :
+			claz === 'Landscapes' ? '.landscapesImgs' :
+			claz === 'Sports' ? '.sportsImgs' : '';
 			
-		$(".img-wrap ." + imgWrapClass).each(function(index, element){
+		$(".img-wrap" + imgWrapClass).each(function(index, element){
 			const src = $(element).children('img').attr('src');
 			const alt = $(element).children('img').attr('alt');
 			const title = $(element).children('h4').text();
