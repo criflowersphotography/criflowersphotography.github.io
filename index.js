@@ -36,7 +36,7 @@ for(var i = 0; i < cards.length; i++){
 }
 
 
-var arrayTotal = $(".carousel-item").get();
+/*var arrayTotal = $(".carousel-item").get();
 var arrayConcerts = [];
 var arrayLandscapes = [];
 var arrayPortraits = [];
@@ -56,7 +56,7 @@ for (i = 0; i < totImg; i++) {
 	if(src.includes('Sports')) {
 		arraySports.push(i);
 	}
-}
+}*/
 
 $(".social").hide();
 
@@ -101,6 +101,7 @@ function closeabout() {
 		$(".info, .showhidemenu, .header, .container").removeClass("animated fadeInRight");
 	});
 }
+
 var flag=true;
 var menuopened=false;
 function showmenu(){
@@ -150,7 +151,7 @@ function right_menu_mouse(){
 	
 function allImgs(){
 	claz = '';
-	hideIndicators(claz);
+	//hideIndicators(claz);
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").css("display","block");
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").css("opacity","0");
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").fadeTo(400,1);
@@ -158,7 +159,7 @@ function allImgs(){
 
 function concertsImgs(){
 	claz = 'Concerts';
-	hideIndicators(claz);
+	//hideIndicators(claz);
 	$(".landscapesImgs, .sportsImgs, .portraitsImgs").css("display","none");
 	$(".concertsImgs").css("display","block");
 	$(".concertsImgs").css("opacity","0");
@@ -167,7 +168,7 @@ function concertsImgs(){
 
 function landscapesImgs(){
 	claz = 'Landscapes';
-	hideIndicators(claz);
+	//hideIndicators(claz);
 	$(".concertsImgs, .sportsImgs, .portraitsImgs").css("display","none");
 	$(".landscapesImgs").css("display","block");
 	$(".landscapesImgs").css("opacity","0");
@@ -176,7 +177,7 @@ function landscapesImgs(){
 
 function sportsImgs(){
 	claz = 'Sports';
-	hideIndicators(claz);
+	//hideIndicators(claz);
 	$(".concertsImgs, .landscapesImgs, .portraitsImgs").css("display","none");
 	$(".sportsImgs").css("display","block");
 	$(".sportsImgs").css("opacity","0");
@@ -185,7 +186,7 @@ function sportsImgs(){
 
 function portraitsImgs(){
 	claz = 'Portraits';
-	hideIndicators(claz);
+	//hideIndicators(claz);
 	$(".concertsImgs, .landscapesImgs, .sportsImgs").css("display","none");
 	$(".portraitsImgs").css("display","block");
 	$(".portraitsImgs").css("opacity","0");
@@ -194,7 +195,7 @@ function portraitsImgs(){
 
 function closeModalGallery(){
 	$("#ModalImgs").modal('hide');
-	$('.carousel').carousel('pause');
+	//$('.carousel').carousel('pause');
 }
 
 /*var indexCarousel = 0;
