@@ -1,5 +1,7 @@
 let currentClaz;
 
+$(document).ready(function() { initializeCarousel('all'); });
+
 function initializeCarousel(claz) {
 	if(claz !== currentClaz) {
 		$(".carousel-indicators").empty();
