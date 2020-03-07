@@ -1,5 +1,8 @@
+let claz = '';
+let currentClaz;
+
 $(".img-wrap").click(function() {
-	if(claz == ''){
+	if(claz === '' && currentClaz === undefined && claz !== currentClaz){
 		$(".img-wrap").each(function(index, element){
 			const src = $(element).children('img').attr('src');
 			const alt = $(element).children('img').attr('alt');
@@ -21,7 +24,7 @@ for(var i = 0; i < cards.length; i++){
     cards2.eq(target).before(cards2.eq(target2));
 }
 
-let claz = '';
+
 var arrayTotal = $(".carousel-item").get();
 var arrayConcerts = [];
 var arrayLandscapes = [];
