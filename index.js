@@ -1,3 +1,9 @@
+$('document').ready(function() {
+	$(".img-wrap").each(function(index){
+		$(".carousel-indicators").append("<li></li>");
+	});
+});
+
 var cards = $(".img-wrap");
 var cards2 = $(".carousel-item");
 for(var i = 0; i < cards.length; i++){
