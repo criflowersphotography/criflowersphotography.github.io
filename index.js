@@ -1,4 +1,4 @@
-$(".img-wrap").click(function() {
+$(document).ready(function() {
 	if(claz == ''){
 		$(".img-wrap").each(function(index, element){
 			const src = $(element).children('img').attr('src');
@@ -9,7 +9,11 @@ $(".img-wrap").click(function() {
 			$(".carousel-inner").append("<div class='carousel-item'><img class='d-block w-100' src='"+src+"' alt='"+alt+"'/><div class='carousel-caption d-none d-md-block'><h3>"+title+"</h3><p>"+description+"</p></div></div>");
 		});
 	}
+	try {
 	$('.carousel').carousel('cycle');
+	} catch (error){
+		consol.log(error);
+	}
 });
 
 var cards = $(".img-wrap");
