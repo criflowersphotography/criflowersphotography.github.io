@@ -14,7 +14,7 @@ $(".img-wrap").click(function() {
 				"</div>");
 		});
 	}
-	$('#gallery').carousel('cycle');
+	$('.carousel').carousel('cycle');
 });
 
 var cards = $(".img-wrap");
@@ -185,7 +185,7 @@ function portraitsImgs(){
 
 function closeModalGallery(){
 	$("#ModalImgs").modal('hide');
-	$('#gallery').carousel('pause');
+	$('.carousel').carousel('pause');
 }
 
 /*var indexCarousel = 0;
