@@ -15,8 +15,8 @@ $(".img-wrap").click(function() {
 		}
 		
 		currentClaz = claz;
+		$('.carousel').carousel('cycle');
 	}
-	$('.carousel').carousel('cycle');
 });
 
 var cards = $(".img-wrap");
