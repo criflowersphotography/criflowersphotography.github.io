@@ -1,6 +1,8 @@
 $('document').ready(function() {
-	$(".img-wrap").each(function(index){
+	$(".img-wrap").each(function(index, element){
 		$(".carousel-indicators").append("<li data-target='#gallery' data-slide-to='"+index+"'></li>");
+		const src = $(el).children('img').attr('src');
+		$(".carousel-inner").append("<div class='carousel-item'><img class='d-block w-100' src='"+src+"' alt=''/></div>");
 	});
 });
 
