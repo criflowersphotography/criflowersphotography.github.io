@@ -30,35 +30,25 @@ for (i = 0; i < totImg; i++) {
 	}
 }
 
-$(".img-wrap").click(function() {
-	if (claz = 'Concerts') {
-		$("#gallery").carousel("pause");
-	  var lengthConcerts = arrayConcerts.length;
-	  for (i = 0; i < lengthConcerts; i++) {
-	    $("#gallery").carousel(arrayConcerts[i]);
-	  }
-	}
-});
-
-/*$('#gallery').on('slid.bs.carousel', function (ev) {
+$('#gallery').on('slid.bs.carousel', function (ev) {
 	if (claz != '') {
-		nextGivenClassElement(claz, ev.relatedTarget, ev.to);
+		nextGivenElement(claz, ev.relatedTarget, ev.to);
 	}
 });
 
-function nextGivenClassElement(claz, el, to) {
+function nextGivenElement(claz, el, to) {
 	const src = $(el).children('img').attr('src');
 
 	console.log('src -> ' + src + ', to -> ' + to);
 
 	if(src && !src.includes(claz)) {		
-		nextGivenClassElement(claz, $('#gallery').carousel(to + 1), (to + 1));
+		nextGivenElement(claz, $('#gallery').carousel(to + 1), (to + 1));
 		//$('#gallery').carousel('previous');
 	}
 	else {
 		$('#gallery').carousel(to);
 	}
-}*/
+}
 
 //data-slide-to="2"
 
@@ -209,7 +199,7 @@ function portraitsImgs(){
 
 function closeModalGallery(){
 	$("#ModalImgs").modal('hide');
-	$('.carousel').carousel('pause');
+	$('#gallery').carousel('pause');
 }
 
 /*
