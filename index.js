@@ -1,7 +1,6 @@
-let claz = '';
 let currentClaz;
 
-$(".img-wrap").click(function() {
+function initializeCarousel(claz) {
 	if(claz !== currentClaz) {
 		$(".carousel-indicators").empty();
 		$(".carousel-inner").empty();
@@ -24,7 +23,7 @@ $(".img-wrap").click(function() {
 		currentClaz = claz;
 		$('.carousel').carousel('cycle');
 	}
-});
+};
 
 var cards = $(".img-wrap");
 var cards2 = $(".carousel-item");
@@ -150,16 +149,14 @@ function right_menu_mouse(){
 }*/
 	
 function allImgs(){
-	claz = '';
-	//hideIndicators(claz);
+	initializeCarousel('all');
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").css("display","block");
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").css("opacity","0");
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").fadeTo(400,1);
 }
 
 function concertsImgs(){
-	claz = 'Concerts';
-	//hideIndicators(claz);
+	initializeCarousel('Concerts');
 	$(".landscapesImgs, .sportsImgs, .portraitsImgs").css("display","none");
 	$(".concertsImgs").css("display","block");
 	$(".concertsImgs").css("opacity","0");
@@ -167,8 +164,7 @@ function concertsImgs(){
 }
 
 function landscapesImgs(){
-	claz = 'Landscapes';
-	//hideIndicators(claz);
+	initializeCarousel('Landscapes');
 	$(".concertsImgs, .sportsImgs, .portraitsImgs").css("display","none");
 	$(".landscapesImgs").css("display","block");
 	$(".landscapesImgs").css("opacity","0");
@@ -176,8 +172,7 @@ function landscapesImgs(){
 }
 
 function sportsImgs(){
-	claz = 'Sports';
-	//hideIndicators(claz);
+	initializeCarousel('Sports');
 	$(".concertsImgs, .landscapesImgs, .portraitsImgs").css("display","none");
 	$(".sportsImgs").css("display","block");
 	$(".sportsImgs").css("opacity","0");
@@ -185,8 +180,7 @@ function sportsImgs(){
 }
 
 function portraitsImgs(){
-	claz = 'Portraits';
-	//hideIndicators(claz);
+	initializeCarousel('Portraits');
 	$(".concertsImgs, .landscapesImgs, .sportsImgs").css("display","none");
 	$(".portraitsImgs").css("display","block");
 	$(".portraitsImgs").css("opacity","0");
@@ -197,14 +191,3 @@ function closeModalGallery(){
 	$("#ModalImgs").modal('hide');
 	//$('.carousel').carousel('pause');
 }
-
-/*var indexCarousel = 0;
-$('.img-wrap').click(function() {
-	var whichSrc = $(this).find('img').attr("src");
-  $('.carousel-item').removeClass('active');
-  $('.carousel-indicators').children().removeClass('active');
-  $('img[src="'+whichSrc+'"]').parent('div.carousel-item').addClass('active');
-  indexCarousel = $(this).index();
-  $(document).find('li[data-slide-to="'+indexCarousel+'"]').addClass('active');
-  $('.carousel').carousel('cycle');
-});*/
