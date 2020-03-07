@@ -1,5 +1,5 @@
 $(".img-wrap").click(function() {
-	if(claz = ''){
+	if(claz == ''){
 		$(".img-wrap").each(function(index, element){
 			const src = $(element).children('img').attr('src');
 			const alt = $(element).children('img').attr('alt');
