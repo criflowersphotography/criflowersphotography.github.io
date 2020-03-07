@@ -34,29 +34,6 @@ for(var i = 0; i < cards.length; i++){
     cards2.eq(target).before(cards2.eq(target2));
 }
 
-
-/*var arrayTotal = $(".carousel-item").get();
-var arrayConcerts = [];
-var arrayLandscapes = [];
-var arrayPortraits = [];
-var arraySports = [];
-var totImg = $(".carousel-item").length;
-for (i = 0; i < totImg; i++) {
-	const src = arrayTotal[i].children[0].src;
-	if(src.includes('Concerts')) {
-		arrayConcerts.push(i);
-	}
-	if(src.includes('Landscapes')) {
-		arrayLandscapes.push(i);
-	}
-	if(src.includes('Portraits')) {
-		arrayPortraits.push(i);
-	}
-	if(src.includes('Sports')) {
-		arraySports.push(i);
-	}
-}*/
-
 $(".social").hide();
 
 $(window).on("load", function(){
@@ -137,16 +114,6 @@ function right_menu_mouse(){
 		flag=!flag
 	}
 }
-
-/*function hideIndicators(claz) {
-	$('.carousel-item').each((index, el) => { 
-		if (claz != '' && !$(el).children('img').attr('src').includes(claz)) {
-			$('.carousel-indicators').find('li[data-slide-to="' + index + '"]').hide();
-		} else {
-			$('.carousel-indicators').find('li[data-slide-to="' + index + '"]').show();
-		}
-	});
-}*/
 	
 function allImgs(){
 	initializeCarousel('all');
@@ -189,5 +156,4 @@ function portraitsImgs(){
 
 function closeModalGallery(){
 	$("#ModalImgs").modal('hide');
-	//$('.carousel').carousel('pause');
 }
