@@ -1,6 +1,6 @@
 $('document').ready(function() {
 	$(".img-wrap").each(function(index){
-		$(".carousel-indicators").append("<li></li>");
+		$(".carousel-indicators").append("<li data-target='#gallery' data-slide-to='"+index+"'></li>");
 	});
 });
 
