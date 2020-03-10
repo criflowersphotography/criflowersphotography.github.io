@@ -12,14 +12,15 @@ $(document).ready(function() {
 });
 
 $(function () {
-	loadingFinished();
    var $images = $('.container img');
    var lastLoadIndex = 0;
    var loadNextImage = function () {
+   	if(lastLoadIndex === 12){
+   		loadingFinished();
+   	}
       if ($images.length === lastLoadIndex) {
           return;
       }
-			console.log('loading image at index ' + lastLoadIndex);
       $images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
       lastLoadIndex += 1;
    };
