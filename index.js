@@ -11,7 +11,7 @@ $(document).ready(function() {
 	}
 });
 
-$(function () {
+/*$(function () {
    var $images = $('.container img');
    var lastLoadIndex = 0;
    var loadNextImage = function () {
@@ -27,9 +27,9 @@ $(function () {
    };
    $images.on('load', loadNextImage);
    loadNextImage();
-});
+});*/
 
-//$(document).ready(function() { initializeCarousel('all'); });
+$(document).ready(function() { initializeCarousel('all'); });
 
 function initializeCarousel(claz) {
 	if(claz !== currentClaz) {
@@ -58,7 +58,7 @@ function initializeCarousel(claz) {
 
 $(".social").hide();
 
-function loadingFinished(){
+$(window).on("load", function(){
 	$("#loading").fadeOut(800, function(){
 		$('#b1').addClass('animated bounceOutLeft')
 		$('#b6').addClass('animated bounceOutRight');
@@ -80,7 +80,7 @@ function loadingFinished(){
 	  	$("#box").css("display","none");
 		},3000);
 	});
-};
+});
 
 function showabout() {
 	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
