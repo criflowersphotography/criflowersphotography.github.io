@@ -2,6 +2,14 @@ let currentClaz;
 
 $(document).ready(function() {
 	var v = $('.container img').length;
+	var cards = $(".img-wrap");
+	var cards2 = $(".carousel-item");
+	for(var i = 0; i < cards.length; i++){
+	    var target = Math.floor(Math.random() * cards.length -1) +1;
+	    var target2 = Math.floor(Math.random() * cards.length -1) +1;
+	    cards.eq(target).before(cards.eq(target2));
+	    cards2.eq(target).before(cards2.eq(target2));
+	}
 	for(i = 0; i < v; i++) {
 		var srcImg = $($('.container img')[i]).attr('data-src');
 		$($('.container img')[i]).attr('src', srcImg);
@@ -38,15 +46,6 @@ function initializeCarousel(claz) {
 		$('.carousel').carousel('cycle');
 	}
 };
-
-var cards = $(".img-wrap");
-var cards2 = $(".carousel-item");
-for(var i = 0; i < cards.length; i++){
-    var target = Math.floor(Math.random() * cards.length -1) +1;
-    var target2 = Math.floor(Math.random() * cards.length -1) +1;
-    cards.eq(target).before(cards.eq(target2));
-    cards2.eq(target).before(cards2.eq(target2));
-}
 
 $(".social").hide();
 
