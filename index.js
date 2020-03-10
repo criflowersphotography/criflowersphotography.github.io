@@ -1,12 +1,15 @@
 let currentClaz;
 
 $(document).ready(function() {
-	[].forEach.call(document.querySelectorAll('img[data-src]'), function(img) {
-		img.setAttribute('src', img.getAttribute('data-src'));
-    img.onload = function() {
-    	img.removeAttribute('data-src');
-    };
-	});
+	var v = $('.container img').length;
+	for(i = 0; i < v; i++) {
+		var srcImg = $($('.container img')[i]).attr('data-src');
+		$($('.container img')[i]).attr('src', srcImg);
+		$($('.container img')[i]).removeAttr('data-src');
+		if(i==12) {
+			loadingFinished();
+		}
+	}
 });
 
 $(document).ready(function() { initializeCarousel('all'); });
@@ -47,7 +50,7 @@ for(var i = 0; i < cards.length; i++){
 
 $(".social").hide();
 
-$(window).on("load", function(){
+function loadingFinished(){
 	$("#loading").fadeOut(800, function(){
 		$('#b1').addClass('animated bounceOutLeft')
 		$('#b6').addClass('animated bounceOutRight');
@@ -69,7 +72,7 @@ $(window).on("load", function(){
 	  	$("#box").css("display","none");
 		},3000);
 	});
-});
+};
 
 function showabout() {
 	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
