@@ -1,7 +1,5 @@
 let currentClaz;
 
-$(document).ready(function() { initializeCarousel('all'); });
-
 $(document).ready(function() {
 	[].forEach.call(document.querySelectorAll('img[data-src]'), function(img) {
 		img.setAttribute('src', img.getAttribute('data-src'));
@@ -10,6 +8,8 @@ $(document).ready(function() {
     };
 	});
 });
+
+$(document).ready(function() { initializeCarousel('all'); });
 
 function initializeCarousel(claz) {
 	if(claz !== currentClaz) {
