@@ -16,6 +16,7 @@ $(function () {
    var lastLoadIndex = 0;
    var loadNextImage = function () {
    	if(lastLoadIndex === 12){
+   		initializeCarousel('all');
    		loadingFinished();
    	}
       if ($images.length === lastLoadIndex) {
@@ -28,7 +29,7 @@ $(function () {
    loadNextImage();
 });
 
-$(document).ready(function() { initializeCarousel('all'); });
+//$(document).ready(function() { initializeCarousel('all'); });
 
 function initializeCarousel(claz) {
 	if(claz !== currentClaz) {
