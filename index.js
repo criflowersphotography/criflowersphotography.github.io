@@ -1,7 +1,6 @@
 let currentClaz;
 
 $(document).ready(function() {
-	var v = $('.container img').length;
 	var cards = $(".img-wrap");
 	var cards2 = $(".carousel-item");
 	for(var i = 0; i < cards.length; i++){
@@ -10,14 +9,22 @@ $(document).ready(function() {
 	    cards.eq(target).before(cards.eq(target2));
 	    cards2.eq(target).before(cards2.eq(target2));
 	}
-	for(i = 0; i < v; i++) {
-		var srcImg = $($('.container img')[i]).attr('data-src');
-		$($('.container img')[i]).attr('src', srcImg);
-		$($('.container img')[i]).removeAttr('data-src');
-		if(i==12) {
-			loadingFinished();
-		}
-	}
+});
+
+$(function () {
+	loadingFinished();
+   var $images = $('.container img');
+   var lastLoadIndex = 0;
+   var loadNextImage = function () {
+      if ($images.length === lastLoadIndex) {
+          return;
+      }
+			console.log('loading image at index ' + lastLoadIndex);
+      $images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
+      lastLoadIndex += 1;
+   };
+   $images.on('load', loadNextImage);
+   loadNextImage();
 });
 
 $(document).ready(function() { initializeCarousel('all'); });
