@@ -52,7 +52,6 @@ function initializeCarousel(claz) {
 		});
 		
 		currentClaz = claz;
-		$('.carousel').carousel('cycle');
 	}
 };
 
@@ -186,4 +185,5 @@ $('.img-wrap').click(function() {
   	$('.carousel-indicators').children().removeClass('active');
   	$('img[src="'+whichSrc+'"]').parent('div.carousel-item').addClass('active');
 	$($('.carousel-indicators').children()[$(".carousel-item.active").index()]).addClass('active');
+	$('.carousel').carousel('cycle');
 });
