@@ -15,14 +15,14 @@ $(function () {
    var $images = $('.container img');
    var lastLoadIndex = 0;
    var loadNextImage = function () {
-   	if(lastLoadIndex === 20){
+   	if(lastLoadIndex === 16){
    		//initializeCarousel('all');
    		loadingFinished();
    	}
       if ($images.length === lastLoadIndex) {
           return;
       }
-      for (i = 0; i < 4; i++) {
+      for (i = 0; i < 8; i++) {
       	$images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
       	lastLoadIndex += 1;
       }
