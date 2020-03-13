@@ -22,7 +22,7 @@ $(function () {
       if ($images.length === lastLoadIndex) {
           return;
       }
-      for (i = 0; i < 8; i++) {
+      for (i = 0; i < 4; i++) {
       	$images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
       	lastLoadIndex += 1;
       }
