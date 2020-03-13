@@ -22,8 +22,11 @@ $(function () {
       if ($images.length === lastLoadIndex) {
           return;
       }
-      $images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
-      lastLoadIndex += 1;
+      for (i = 0; i < 4; i++) {
+      	$images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
+      	lastLoadIndex += 1;
+      }
+      var i = 0;
    };
    $images.on('load', loadNextImage);
    loadNextImage();
