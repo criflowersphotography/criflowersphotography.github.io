@@ -12,22 +12,21 @@ $(document).ready(function() {
 });
 
 $(function () {
-	var $images = $('.container img');
-	var lastLoadIndex = 0;
-	var loadNextImage = function () {
-		if(lastLoadIndex === 20){
-			//initializeCarousel('all');
-			loadingFinished();
-		}
-	  if ($images.length === lastLoadIndex) {
-	  	return;
-	  }
-	  lastLoadIndex += 1;
-	};
-	$images.on('load', loadNextImage).each(function() {
-		$(this).trigger('load');
-	});
-	loadNextImage();
+   var $images = $('.container img');
+   var lastLoadIndex = 0;
+   var loadNextImage = function () {
+   	if(lastLoadIndex === 20){
+   		//initializeCarousel('all');
+   		loadingFinished();
+   	}
+      if ($images.length === lastLoadIndex) {
+          return;
+      }
+      $images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
+      lastLoadIndex += 1;
+   };
+   $images.on('load', loadNextImage);
+   loadNextImage();
 });
 
 $(document).ready(function() { initializeCarousel('all'); });
