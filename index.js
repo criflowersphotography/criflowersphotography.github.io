@@ -20,11 +20,16 @@ $(function () {
    		loadingFinished();
    	}
       if ($images.length === lastLoadIndex) {
-          return;
+      	initializeCarousel('all');
+      	return false;
       }
       for (i = 0; i < 4; i++) {
-      	$images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
-      	lastLoadIndex += 1;
+	  		$images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
+	  		$images.eq(lastLoadIndex).removeAttr('data-src');
+	  		lastLoadIndex += 1;
+      	if (lastLoadIndex == $images.length) {
+      		i=lastLoadIndex;
+      	}
       }
       var i = 0;
    };
@@ -32,7 +37,7 @@ $(function () {
    loadNextImage();
 });
 
-$(document).ready(function() { initializeCarousel('all'); });
+//$(document).ready(function() { initializeCarousel('all'); });
 
 function initializeCarousel(claz) {
 	if(claz !== currentClaz) {
@@ -46,8 +51,8 @@ function initializeCarousel(claz) {
 			claz === 'Sports' ? '.sportsImgs' : '';
 			
 		$(".img-wrap" + imgWrapClass).each(function(index, element){
-			const src = $(element).children('img').attr('data-src');
-			const aSrc = src.replace('.jpg','_bigger.jpg');
+			const src = $(element).children('img').attr('src');
+			const aSrc = src.replace(".jpg","_bigger.jpg?");
 			const alt = $(element).children('img').attr('alt');
 			const title = $(element).children('h4').text();
 			const description = $(element).children('p').text();
@@ -79,9 +84,9 @@ function loadingFinished() {
 		setTimeout(function(){
 			$(".info").removeClass("animated bounceInLeft");
 			$(".showhidemenu, .right_menu").removeClass("animated bounceInRight");
-			$(".social").removeClass("animated zoomIn");
+			//$(".social").removeClass("animated zoomIn");
 	  	$("#box").css("display","none");
-		},3000);
+		},1000);
 	});
 };
 
@@ -184,10 +189,10 @@ function closeModalGallery(){
 }
 
 $('.img-wrap').click(function() {
-	var whichSrc = $(this).find('img').attr("src");
-  	$('.carousel-item').removeClass('active');
-  	$('.carousel-indicators').children().removeClass('active');
-  	$('img[src="'+whichSrc+'"]').parent('div.carousel-item').addClass('active');
-	$($('.carousel-indicators').children()[$(".carousel-item.active").index()]).addClass('active');
+	var $src = $(this).children().attr('src').split('.')[0];
+	$('.carousel-item').removeClass('active');
+	$('.carousel-indicators').children().removeClass('active');
+	$($('.carousel img').attr('src').includes($src)).parent('div.carousel-item').addClass('active');
+	$(($('.carousel-indicators').children())[$('.carousel-item.active').index()]).addClass('active');
 	$('.carousel').carousel('cycle');
 });
