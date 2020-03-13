@@ -46,12 +46,13 @@ function initializeCarousel(claz) {
 			claz === 'Sports' ? '.sportsImgs' : '';
 			
 		$(".img-wrap" + imgWrapClass).each(function(index, element){
-			const src = $(element).children('img').attr('src');
+			const src = $(element).children('img').attr('data-src');
+			const aSrc = src.replace('.jpg','_bigger.jpg');
 			const alt = $(element).children('img').attr('alt');
 			const title = $(element).children('h4').text();
 			const description = $(element).children('p').text();
 			$(".carousel-indicators").append("<li data-target='#gallery' data-slide-to='"+index+"' class='"+(index==0 ? 'active' : '')+"'></li>");
-			$(".carousel-inner").append("<div class='carousel-item "+(index==0 ? "active" : "")+"'><img class='d-block w-100' src='"+src+"' alt='"+alt+"'/><div class='carousel-caption d-none d-md-block'><h3>"+title+"</h3><p>"+description+"</p></div></div>");
+			$(".carousel-inner").append("<div class='carousel-item "+(index==0 ? "active" : "")+"'><img class='d-block w-100' src='"+aSrc+"' alt='"+alt+"'/><div class='carousel-caption d-none d-md-block'><h3>"+title+"</h3><p>"+description+"</p></div></div>");
 		});
 		
 		currentClaz = claz;
