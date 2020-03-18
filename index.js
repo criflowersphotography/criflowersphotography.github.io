@@ -1,7 +1,7 @@
 let currentClaz;
 
 $(document).ready(function() {
-	var cards = $(".img-wrap-blurry");
+	var cards = $(".img-wrap");
 	var cards2 = $(".carousel-item");
 	for(var i = 0; i < cards.length; i++){
 	    var target = Math.floor(Math.random() * cards.length -1) +1;
@@ -11,7 +11,7 @@ $(document).ready(function() {
 	}
 });
 
-$(function () {
+/*$(function () {
    var $images = $('.container img');
    var lastLoadIndex = 0;
    var loadNextImage = function () {
@@ -26,7 +26,8 @@ $(function () {
 	  		$images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
 	  		var tempSrc = $images.eq(lastLoadIndex).attr('data-src').replace(".jpg","_low.jpg");
 	  		$images.eq(lastLoadIndex).attr('data-src', tempSrc);
-	  		$images.eq(lastLoadIndex).parent().toggleClass('img-wrap-blurry img-wrap');
+	  		//$images.eq(lastLoadIndex).parent().toggleClass('img-wrap-blurry img-wrap');
+	  		//$images.eq(lastLoadIndex).removeAttr('style');
 	  		lastLoadIndex += 1;
       	if (lastLoadIndex == $images.length) {
       		i=lastLoadIndex;
@@ -36,6 +37,29 @@ $(function () {
    };
    $images.on('load', loadNextImage);
    loadNextImage();
+});*/
+
+$(function () {
+	var $images = $('.container img');
+	var $lengthImgs = $images.length;
+	var i = 0;
+	loadNextImg();
+	function loadNextImg() {
+		if (i < $lengthImgs) {
+			if(i === 15){
+	   		loadingFinished();
+	   	}
+	   	$($images[i]).attr('src', $($images[i]).attr('data-src'));
+	   	$($images[i]).attr('data-src', $($images[i]).attr('data-src').replace(".jpg","_low.jpg"));
+	   	$($images[i]).removeAttr('style');
+		}
+		if(i === $lengthImgs){
+	   	initializeCarousel('all');
+	   	return false;
+	  }
+		i += 1;
+		$($images[i]).ready(loadNextImg);
+	}
 });
 
 function initializeCarousel(claz) {
@@ -56,7 +80,7 @@ function initializeCarousel(claz) {
 			const title = $(element).children('h4').text();
 			const description = $(element).children('p').text();
 			$(".carousel-indicators").append("<li data-target='#gallery' data-slide-to='"+index+"' class='"+(index==0 ? 'active' : '')+"'></li>");
-			$(".carousel-inner").append("<div class='carousel-item "+(index==0 ? "active" : "")+"'><img class='d-block w-100' src='"+lowSrc+"' data-src='"+highSrc+"' alt='"+alt+"'/><div class='carousel-caption d-md-block'><h3>"+title+"</h3><p>"+description+"</p></div></div>");
+			$(".carousel-inner").append("<div class='carousel-item "+(index==0 ? "active" : "")+"'><img class='d-block w-100' style='filter:blur(10px);' src='"+lowSrc+"' data-src='"+highSrc+"' alt='"+alt+"'/><div class='carousel-caption d-md-block'><h3>"+title+"</h3><p>"+description+"</p></div></div>");
 		});
 		
 		currentClaz = claz;
@@ -190,11 +214,20 @@ function closeModalGallery(){
 $(document).on('click', "div.img-wrap", function () {
 	const chkSrc = $($('.carousel-item img')[0]).attr('src').includes('low');
 	if(chkSrc==true) {
-		for (i = 0; i < $('.carousel-item img').length; i++) {
-			const tempSrc = $($('.carousel-item img')[i]).attr('data-src');
-			$($('.carousel-item img')[i]).attr('src', tempSrc+"?");
-			$($('.carousel-item img')[i]).removeAttr('data-src');
-			//$('.carousel img')
+		var i = 0;
+		loadNextCarousel();
+		function loadNextCarousel() {
+			if(i < $('.carousel-item img').length) {
+				const tempSrc = $($('.carousel-item img')[i]).attr('data-src');
+				$($('.carousel-item img')[i]).attr('src', tempSrc+"?");
+				$($('.carousel-item img')[i]).removeAttr('data-src');
+				$($('.carousel-item img')[i]).removeAttr('style');
+			}
+			else {
+				return false;
+			}
+			i += 1;
+			$($('.carousel-item img')[i]).ready(loadNextCarousel);
 		}
 	}
 	var $src = $(this).children().attr('src').split('.')[0];

@@ -108,11 +108,6 @@ h1 {
   padding-right:0;
   padding-left:0;
 }
-.img-wrap-blurry img {
-  transition: transform .25s;
-  width: 100%;
-  filter: blur(5px);
-}
 .img-wrap {
   overflow: hidden;
   position: relative;
@@ -129,9 +124,8 @@ h1 {
   transition: opacity .25s;
 }
 .img-wrap img {
-  transition: transform .25s;
   width: 100%;
-  filter:none;
+  transition: filter .75s, transform .25s;;
 }
 .img-wrap:hover img {
   transform: scale(1.15);
@@ -287,8 +281,7 @@ td {
 	margin-right: 0!important;
 }
 .carousel img {
-	/*filter: blur(10px);*/
-	filter: none;
+	transition: filter 1s;
 }
 .container_about, i.fas.fa-angle-left {
 	cursor:pointer;
