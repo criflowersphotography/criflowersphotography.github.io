@@ -1,7 +1,7 @@
 let currentClaz;
 
 $(document).ready(function() {
-	var cards = $(".img-wrap");
+	var cards = $(".img-wrap-blurry");
 	var cards2 = $(".carousel-item");
 	for(var i = 0; i < cards.length; i++){
 	    var target = Math.floor(Math.random() * cards.length -1) +1;
@@ -16,7 +16,6 @@ $(function () {
    var lastLoadIndex = 0;
    var loadNextImage = function () {
    	if(lastLoadIndex === 16){
-   		//initializeCarousel('all');
    		loadingFinished();
    	}
       if ($images.length === lastLoadIndex) {
@@ -25,7 +24,9 @@ $(function () {
       }
       for (i = 0; i < 4; i++) {
 	  		$images.eq(lastLoadIndex).attr('src', $images.eq(lastLoadIndex).attr('data-src'));
-	  		$images.eq(lastLoadIndex).removeAttr('data-src');
+	  		var tempSrc = $images.eq(lastLoadIndex).attr('data-src').replace(".jpg","_low.jpg");
+	  		$images.eq(lastLoadIndex).attr('data-src', tempSrc);
+	  		$images.eq(lastLoadIndex).parent().toggleClass('img-wrap-blurry img-wrap');
 	  		lastLoadIndex += 1;
       	if (lastLoadIndex == $images.length) {
       		i=lastLoadIndex;
@@ -49,13 +50,13 @@ function initializeCarousel(claz) {
 			claz === 'Sports' ? '.sportsImgs' : '';
 			
 		$(".img-wrap" + imgWrapClass).each(function(index, element){
-			const src = $(element).children('img').attr('src');
-			const aSrc = src.replace(".jpg","_bigger.jpg?");
+			const lowSrc = $(element).children('img').attr('data-src');
+			const highSrc = lowSrc.replace("_low.jpg","_bigger.jpg");
 			const alt = $(element).children('img').attr('alt');
 			const title = $(element).children('h4').text();
 			const description = $(element).children('p').text();
 			$(".carousel-indicators").append("<li data-target='#gallery' data-slide-to='"+index+"' class='"+(index==0 ? 'active' : '')+"'></li>");
-			$(".carousel-inner").append("<div class='carousel-item "+(index==0 ? "active" : "")+"'><img class='d-block w-100' src='"+aSrc+"' alt='"+alt+"'/><div class='carousel-caption d-md-block'><h3>"+title+"</h3><p>"+description+"</p></div></div>");
+			$(".carousel-inner").append("<div class='carousel-item "+(index==0 ? "active" : "")+"'><img class='d-block w-100' src='"+lowSrc+"' data-src='"+highSrc+"' alt='"+alt+"'/><div class='carousel-caption d-md-block'><h3>"+title+"</h3><p>"+description+"</p></div></div>");
 		});
 		
 		currentClaz = claz;
@@ -186,12 +187,22 @@ function closeModalGallery(){
 	$("#ModalImgs").modal('hide');
 }
 
-$('.img-wrap').click(function() {
+$(document).on('click', "div.img-wrap", function () {
+	const chkSrc = $($('.carousel-item img')[0]).attr('src').includes('low');
+	if(chkSrc==true) {
+		for (i = 0; i < $('.carousel-item img').length; i++) {
+			const tempSrc = $($('.carousel-item img')[i]).attr('data-src');
+			$($('.carousel-item img')[i]).attr('src', tempSrc+"?");
+			$($('.carousel-item img')[i]).removeAttr('data-src');
+			//$('.carousel img')
+		}
+	}
 	var $src = $(this).children().attr('src').split('.')[0];
+	var src2 = $src+"_";
 	$('.carousel-item').removeClass('active');
 	$('.carousel-indicators').children().removeClass('active');
 	$('.carousel img').each(function(index, el) {
-		if($(el).attr('src').includes($src)) {
+		if($(el).attr('src').includes(src2)) {
 			$(el).parent('div.carousel-item').addClass('active'); 
 			$(($('.carousel-indicators').children())[index]).addClass('active'); 
 			return false;
