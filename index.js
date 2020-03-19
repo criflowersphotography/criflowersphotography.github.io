@@ -64,19 +64,17 @@ $(function initializeCarousel(claz) {
 });
 
 $(window).on('load', function () {
-	//for (i = 0; i < $('.img-fluid').length; i++) {
 		$('.img-fluid').each(function(i, el) {
-			$('.container').append("<img class='loadMidImg' id='big" + $(el).attr('id') + "' style='display:none;' src='"+$(el).attr('data-src')+"'/>");	
-			var img = document.getElementById('big' + $(el).attr('id'));
-			img.onload = function() {
-				$("#" + $(el).attr('id')).attr("src", $('#big' + $(el).attr('id')).attr('src'));
-				$("#" + $(el).attr('id')).removeAttr("style");
-			}
+			var id = "big" + i;
+			
+			$('.container').append("<img class='loadMidImg' id='" + id + "' style='display:none;' src='" + $(el).attr('data-src') + "'/>");	
+			
+			$('#' + id).on('load', function(event) {
+				$(el)
+					.attr("src", $(event.target).attr('src'))
+					.removeAttr("style");
+			});
 		});
-		
-		
-		
-	//}
 });
 
 /*
