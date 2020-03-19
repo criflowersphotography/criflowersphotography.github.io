@@ -68,7 +68,6 @@ $(window).on('load', function () {
 	$('.img-fluid').each(function(i, el) {
 
 		$('.container').append("<img class='loadMidImg' id='mid" + i + "' style='display:none;' src='" + $(el).attr('data-src') + "'/>");	
-		$('.container').append("<img class='loadMidImg' id='big" + i + "' style='display:none;' src='" + $(el).attr('data-src').split('.')[0] + "_bigger.jpg" + "'/>");				
 		
 		$('#mid' + i).on('load', function(event) {
 			$(el)
@@ -206,19 +205,28 @@ function closeModalGallery(){
 }
 
 $(document).on('click', "div.img-wrap", function (event) {
-	var $src = $(this).children().attr('src').split('.')[0];
+	
 	$('.carousel-item').removeClass('active');
 	$('.carousel-indicators').children().removeClass('active');
 	
-	var carouselImg = $('.carousel img[src*="' + $src + '"]');
+	var indexDiv = $(event.target).index();
+	var carouselImg = $("#carousel" + indexDiv);
+	var $src = carouselImg.attr('src');
 	carouselImg.parent('div.carousel-item').addClass('active'); 
 	$('.carousel-indicators li[data-slide-to="' + carouselImg.index() + '"]').addClass('active');
 	$('.carousel').carousel('cycle');
 	
-	$('#big' + 0).on('load', function(event) {
-		alert("SUCCHIA!!!");
-				//$("#carousel" + i)
-					//.attr("src", $(event.target).attr('src'))
-				  //.removeAttr('style');
+	
+	$('img[id^="carousel"').each(function(i, el) {
+		if ($("#big" + i).length == 0) {
+			$('.container').append("<img class='loadHighImg' id='big" + i + "' style='display:none;' src='" + $("#carousel" + i).attr('src').split('.')[0] + "_bigger.jpg" + "'/>");				
+			
+			$('#big' + i).on('load', function(event) {
+				
+						$("#carousel" + i)
+							.attr("src", $(event.target).attr('src'))
+						  .removeAttr('style');
+			});
+		}
 	});
 });
