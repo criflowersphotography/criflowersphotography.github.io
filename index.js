@@ -79,11 +79,11 @@ $(window).on('load', function () {
 				
 			});
 			
-			$('#big' + i).on('load', function(event) {
+			/*$('#big' + i).on('load', function(event) {
 				$("#carousel" + i)
 					.attr("src", $(event.target).attr('src'))
 				  .removeAttr('style');
-			});
+			});*/
 		});
 });
 
