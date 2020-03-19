@@ -65,26 +65,20 @@ function initializeCarousel(claz) {
 };
 
 $(window).on('load', function () {
-		$('.img-fluid').each(function(i, el) {
+	$('.img-fluid').each(function(i, el) {
 
-			$('.container').append("<img class='loadMidImg' id='mid" + i + "' style='display:none;' src='" + $(el).attr('data-src') + "'/>");	
-			$('.container').append("<img class='loadMidImg' id='big" + i + "' style='display:none;' src='" + $(el).attr('data-src').split('.')[0] + "_bigger.jpg" + "'/>");				
+		$('.container').append("<img class='loadMidImg' id='mid" + i + "' style='display:none;' src='" + $(el).attr('data-src') + "'/>");	
+		$('.container').append("<img class='loadMidImg' id='big" + i + "' style='display:none;' src='" + $(el).attr('data-src').split('.')[0] + "_bigger.jpg" + "'/>");				
+		
+		$('#mid' + i).on('load', function(event) {
+			$(el)
+				.attr("src", $(event.target).attr('src'))
+				.removeAttr("style");
+			$("#carousel" + i)
+				.attr("src", $(event.target).attr('src'));
 			
-			$('#mid' + i).on('load', function(event) {
-				$(el)
-					.attr("src", $(event.target).attr('src'))
-					.removeAttr("style");
-				$("#carousel" + i)
-					.attr("src", $(event.target).attr('src'));
-				
-			});
-			
-			/*$('#big' + i).on('load', function(event) {
-				$("#carousel" + i)
-					.attr("src", $(event.target).attr('src'))
-				  .removeAttr('style');
-			});*/
 		});
+	});
 });
 
 $(".social").hide();
@@ -220,4 +214,11 @@ $(document).on('click', "div.img-wrap", function (event) {
 	carouselImg.parent('div.carousel-item').addClass('active'); 
 	$('.carousel-indicators li[data-slide-to="' + carouselImg.index() + '"]').addClass('active');
 	$('.carousel').carousel('cycle');
+	
+	$('#big' + 0).on('load', function(event) {
+		alert("SUCCHIA!!!");
+				//$("#carousel" + i)
+					//.attr("src", $(event.target).attr('src'))
+				  //.removeAttr('style');
+	});
 });
