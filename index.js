@@ -209,24 +209,21 @@ $(document).on('click', "div.img-wrap", function (event) {
 	$('.carousel-item').removeClass('active');
 	$('.carousel-indicators').children().removeClass('active');
 	
-	var indexDiv = $(event.target).index();
-	var carouselImg = $("#carousel" + indexDiv);
-	var $src = carouselImg.attr('src');
-	carouselImg.parent('div.carousel-item').addClass('active'); 
-	$('.carousel-indicators li[data-slide-to="' + carouselImg.index() + '"]').addClass('active');
+	var $src = $(event.target).children().attr('data-src').split('-')[0];
+	$(".carousel-item img[src|='"+$src+"']").parent().addClass('active');
+	var $idx = $(".carousel-item img[src|='"+$src+"']").parent().addClass('active').index();
+	$(".carousel-indicators li[data-slide-to='"+$idx+"']").addClass('active');
 	$('.carousel').carousel('cycle');
-	
 	
 	$('img[id^="carousel"').each(function(i, el) {
 		if ($("#big" + i).length == 0) {
-			$('.container').append("<img class='loadHighImg' id='big" + i + "' style='display:none;' src='" + $("#carousel" + i).attr('src').split('.')[0] + "_bigger.jpg" + "'/>");				
-			
-			$('#big' + i).on('load', function(event) {
-				
-						$("#carousel" + i)
-							.attr("src", $(event.target).attr('src'))
-						  .removeAttr('style');
-			});
+			$('.container').append("<img class='loadHighImg' id='big" + i + "' style='display:none;' src='" + $("#carousel" + i).attr('src').split('-')[0] + "-big.jpg" + "'/>");
 		}
+		
+		$('#big' + i).on('load', function(event) {	
+			$("#carousel" + i)
+				.attr("src", $(event.target).attr('src'))
+				.removeAttr('style');
+		});
 	});
 });
