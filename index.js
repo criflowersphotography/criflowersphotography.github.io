@@ -65,10 +65,8 @@ $(window).on('load', function () {
 		$(el).attr('src', $(el).attr('data-src')).on('load', function(event) {	
 				$(event.target).removeAttr('style');
 			});
-
-		/*$(".carousel-item img[id$='" + $(el).attr('id') + "']").attr('src', $midSrc).on('load', function(event) {	
-				$(event.target).removeAttr('style');
-			});*/
+		
+		$(".carousel-item img[id$='" + $(el).attr('id') + "']").attr('src', $midSrc);
 	});
 	
 	loadingFinished();
@@ -217,3 +215,14 @@ $('.img-wrap').on('click', function (event) {
 			});
 	}
 });
+
+$('#gallery').on('slide.bs.carousel', function (event) {
+		const $carouselImg = $(event.relatedTarget).children('img');
+		const $bigImgId = 'big-'+ $carouselImg.attr('id');
+		const $bigSrc = $carouselImg.attr('src').replace('mid', 'big');
+		if (!$('#' + $bigImgId).length) {
+	  	$carouselImg.attr('src', $bigSrc).on('load', function(event) {	
+					$(event.target).attr('id', $bigImgId).removeAttr('style');
+				});
+		}
+	});
