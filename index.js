@@ -18,45 +18,39 @@ function initializeCarousel(claz) {
 		$(".carousel-indicators").empty();
 		$(".carousel-inner").empty();
 		
-		const imgWrapClass = 
-			claz === 'Concerts' ? '.concertsImgs' :
-			claz === 'Portraits' ? '.portraitsImgs' :
-			claz === 'Landscapes' ? '.landscapesImgs' :
-			claz === 'Sports' ? '.sportsImgs' : '';
-		
 		let numConcerts = 0;
 		let numPortraits = 0;
 		let numLandscapes = 0;
 		let numSports = 0;
 		
-		$(".img-wrap" + imgWrapClass).each(function(index, element) {
+		$(".img-fluid").each(function(index, element) {
 			
-			const img = $(element).children('img');
-			const lowResSrc = img.attr('src');
+			const img = $(element);
+			const resSrc = img.attr('src');
 			const alt = img.attr('alt');
-			const title = $(element).children('h4').text();
-			const description = $(element).children('p').text();
+			const title = $(element).siblings('h4').text();
+			const description = $(element).siblings('p').text();
 			
-			const currentClaz = $(element).attr('class').split(' ')[1];
+			const currentImgClaz = $(element).attr('class').split(' ')[1];
 			
 			let idSuffix;
-			if (currentClaz === 'concertsImgs') {
-				idSuffix = currentClaz + "-" + numConcerts;
+			if (currentImgClaz === 'concertsImgs') {
+				idSuffix = currentImgClaz + "-" + numConcerts;
 				numConcerts++;
-			} else if (currentClaz === 'portraitsImgs') {
-				idSuffix = currentClaz + "-" + numPortraits;			
+			} else if (currentImgClaz === 'portraitsImgs') {
+				idSuffix = currentImgClaz + "-" + numPortraits;			
 				numPortraits++;
-			} else if (currentClaz === 'landscapesImgs') {
-				idSuffix = currentClaz + "-" + numLandscapes;
+			} else if (currentImgClaz === 'landscapesImgs') {
+				idSuffix = currentImgClaz + "-" + numLandscapes;
 				numLandscapes++;
 			} else {
-				idSuffix = currentClaz + "-" + numSports;
+				idSuffix = currentImgClaz + "-" + numSports;
 				numSports++;
 			}
 			
 			img.attr('id', idSuffix);
 			$(".carousel-indicators").append("<li id='indicator-" + idSuffix + "' data-target='#gallery' data-slide-to='"+index+"' class='"+(index==0 ? 'active' : '')+"'></li>");
-			$(".carousel-inner").append("<div class='carousel-item "+(index==0 ? "active" : "")+"'><img id='carousel-" + idSuffix + "' class='d-block w-100' style='filter:blur(10px);' src='"+lowResSrc+"' alt='"+alt+"'/><div class='carousel-caption d-md-block'><h3>"+title+"</h3><p>"+description+"</p></div></div>");
+			$(".carousel-inner").append("<div class='carousel-item "+(index==0 ? "active" : "")+"'><img id='carousel-" + idSuffix + "' class='d-block w-100' style='filter:blur(10px);' src='"+resSrc+"' alt='"+alt+"'/><div class='carousel-caption d-md-block'><h3>"+title+"</h3><p>"+description+"</p></div></div>");
 		});
 		
 		currentClaz = claz;
@@ -72,45 +66,12 @@ $(window).on('load', function () {
 				$(event.target).removeAttr('style');
 			});
 
-		$(".carousel-item img[id$='" + $(el).attr('id') + "']").attr('src', $midSrc).on('load', function(event) {	
+		/*$(".carousel-item img[id$='" + $(el).attr('id') + "']").attr('src', $midSrc).on('load', function(event) {	
 				$(event.target).removeAttr('style');
-			});
-		
-		
-		
-		/*if ($('.loadMidImg').length == 0) {
-			$('.container').append("<img class='loadMidImg' id='"+id+ "-" + i +"' style='display:none;' src='" + $(el).attr('data-src') + "'/>");
-		}
-		else {
-			if (id.includes('concerts') == true) {
-				var id = id + "-" + $(".loadMidImg[id|='"+id+"']").length;
-				$('.container').append("<img class='loadMidImg' id='"+id+"' style='display:none;' src='" + $(el).attr('data-src') + "'/>");
-			}
-			if (id.includes('portraits') == true) {
-				var id = id + "-" + $(".loadMidImg[id|='"+id+"']").length;
-				$('.container').append("<img class='loadMidImg' id='"+id+"' style='display:none;' src='" + $(el).attr('data-src') + "'/>");
-			}
-			if (id.includes('sports') == true) {
-				var id = id + "-" + $(".loadMidImg[id|='"+id+"']").length;
-				$('.container').append("<img class='loadMidImg' id='"+id+"' style='display:none;' src='" + $(el).attr('data-src') + "'/>");
-			}
-			if (id.includes('landscapes') == true) {
-				var id = id + "-" + $(".loadMidImg[id|='"+id+"']").length;
-				$('.container').append("<img class='loadMidImg' id='"+id+"' style='display:none;' src='" + $(el).attr('data-src') + "'/>");
-			}
-		}
-		
-		$($('.loadMidImg')[i]).on('load', function(event) {
-			$(el)
-				.attr("src", $(event.target).attr('src'))
-				.removeAttr("style");
-			$("#carousel" + i)
-				.attr("src", $(event.target).attr('src'));
-			
-		});*/
-		
-		
+			});*/
 	});
+	
+	loadingFinished();
 });
 
 $(".social").hide();
@@ -133,7 +94,6 @@ function loadingFinished() {
 		setTimeout(function(){
 			$(".info").removeClass("animated bounceInLeft");
 			$(".showhidemenu, .right_menu").removeClass("animated bounceInRight");
-			//$(".social").removeClass("animated zoomIn");
 	  	$("#box").css("display","none");
 		},1000);
 	});
