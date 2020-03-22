@@ -100,13 +100,14 @@ function loadingFinished() {
 			$(".showhidemenu, .right_menu").removeClass("animated bounceInRight");
 	  	$("#box").css("display","none");
 		},1000);
+		$(window).scrollTop(0);
 	});
 };
 
 function showabout() {
-	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
 	$(".header, .container, .showhidemenu").fadeOut(800).addClass("animated fadeOutRight");
 	$(".info").fadeOut(200).addClass("animated fadeOutRight");
+	$(".container_about").css({"display":"flex","display":"-webkit-flex"});
 	$(".container_about").addClass("animated fadeInLeft").fadeTo(800,1, function(){
 		$(window).scrollTop(0);
 		$(".container_about").removeClass("animated fadeInLeft");

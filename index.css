@@ -14,8 +14,10 @@ body {
 		margin:0;
 		padding:0;
 		background-color:#000;
-		background: url('img/background.webp') no-repeat center center fixed;
-  	background-size: cover;
+		background: url('img/background.jpg') no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
   	overflow-y: auto;
   	overflow-x:hidden;
     top:0;
@@ -141,6 +143,7 @@ h1 {
   color: #fff;
   opacity: 0.4;
   z-index:1;
+  pointer-events:none;
 }
 .img_title{
   position: absolute;
@@ -150,6 +153,7 @@ h1 {
   color: #fff;
   opacity: 0.4;
   z-index:1;
+  pointer-events:none;
 }
 .img-wrap:hover .img_description,.img-wrap:hover .img_title{
 	opacity:0.9;
@@ -407,8 +411,10 @@ a:visited:hover {
 }
 @media (max-width: 1024px){
 	body { 
-  	background: url('img/background_1024.webp') no-repeat center fixed;
-  	background-size: cover;
+  	background: url(img/background_1024.jpg) no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 	}
 	.modal-dialog {
     max-width: 100%;
