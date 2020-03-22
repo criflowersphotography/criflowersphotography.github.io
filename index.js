@@ -23,13 +23,19 @@ function initializeCarousel(claz) {
 		let numLandscapes = 0;
 		let numSports = 0;
 		
-		$(".img-fluid").each(function(index, element) {
+		const imgWrapClass = 
+			claz === 'Concerts' ? '.concertsImgs' :
+			claz === 'Portraits' ? '.portraitsImgs' :
+			claz === 'Landscapes' ? '.landscapesImgs' :
+			claz === 'Sports' ? '.sportsImgs' : '';
+		
+		$(".img-wrap" + imgWrapClass).each(function(index, element) {
 			
-			const img = $(element);
+			const img = $(element).children('img');
 			const resSrc = img.attr('src');
 			const alt = img.attr('alt');
-			const title = $(element).siblings('h4').text();
-			const description = $(element).siblings('p').text();
+			const title = $(element).children('h4').text();
+			const description = $(element).children('p').text();
 			
 			const currentImgClaz = $(element).attr('class').split(' ')[1];
 			
@@ -62,9 +68,9 @@ $(window).on('load', function () {
 		const $midImgId = 'mid-'+ $(el).attr('id');
 		const $midSrc = $(el).attr('data-src').replace('low', 'mid');
 		
-		$(el).attr('src', $(el).attr('data-src')).on('load', function(event) {	
-				$(event.target).removeAttr('style');
-			});
+		$(el).attr('src', $midSrc).on('load', function(event) {	
+			$(event.target).removeAttr('style');
+		});
 		
 		$(".carousel-item img[id$='" + $(el).attr('id') + "']").attr('src', $midSrc);
 	});
@@ -156,7 +162,7 @@ function allImgs(){
 	initializeCarousel('all');
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").css("display","block");
 	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").css("opacity","0");
-	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").fadeTo(400,1);
+	$(".concertsImgs, .landscapesImgs, .sportsImgs, .portraitsImgs").fadeTo(800,1);
 }
 
 function concertsImgs(){
@@ -164,7 +170,7 @@ function concertsImgs(){
 	$(".landscapesImgs, .sportsImgs, .portraitsImgs").css("display","none");
 	$(".concertsImgs").css("display","block");
 	$(".concertsImgs").css("opacity","0");
-	$(".concertsImgs").fadeTo(400,1);
+	$(".concertsImgs").fadeTo(800,1);
 }
 
 function landscapesImgs(){
@@ -172,7 +178,7 @@ function landscapesImgs(){
 	$(".concertsImgs, .sportsImgs, .portraitsImgs").css("display","none");
 	$(".landscapesImgs").css("display","block");
 	$(".landscapesImgs").css("opacity","0");
-	$(".landscapesImgs").fadeTo(400,1);
+	$(".landscapesImgs").fadeTo(800,1);
 }
 
 function sportsImgs(){
@@ -180,7 +186,7 @@ function sportsImgs(){
 	$(".concertsImgs, .landscapesImgs, .portraitsImgs").css("display","none");
 	$(".sportsImgs").css("display","block");
 	$(".sportsImgs").css("opacity","0");
-	$(".sportsImgs").fadeTo(400,1);
+	$(".sportsImgs").fadeTo(800,1);
 }
 
 function portraitsImgs(){
@@ -188,7 +194,7 @@ function portraitsImgs(){
 	$(".concertsImgs, .landscapesImgs, .sportsImgs").css("display","none");
 	$(".portraitsImgs").css("display","block");
 	$(".portraitsImgs").css("opacity","0");
-	$(".portraitsImgs").fadeTo(400,1);
+	$(".portraitsImgs").fadeTo(800,1);
 }
 
 function closeModalGallery(){
@@ -202,27 +208,32 @@ $('.img-wrap').on('click', function (event) {
 	
 	const $img = $(event.target).children('img.img-fluid');
 	const $imgId = $img.attr('id');
-	$(".carousel-item img[id$='" + $imgId + "']").parent().addClass('active');
+	const $carouselImg = $(".carousel-item img[id$='" + $imgId + "']");
+	
+	$carouselImg.parent().addClass('active');
 	$(".carousel-indicators li[id$='" + $imgId + "']").addClass('active')
 
 	$('.carousel').carousel('cycle');
 	
 	const $bigImgId = 'big-'+ $imgId;
 	const $bigSrc = $img.attr('data-src').replace('mid', 'big');
-	if (!$('#' + $bigImgId).length) {
-		$(".carousel-item img[id$='" + $imgId + "']").attr('src', $bigSrc).on('load', function(event) {	
-				$(event.target).attr('id', $bigImgId).removeAttr('style');
-			});
-	}
+	
+	replaceSrcImg($carouselImg, $bigImgId, $bigSrc);
+
 });
 
 $('#gallery').on('slide.bs.carousel', function (event) {
-		const $carouselImg = $(event.relatedTarget).children('img');
-		const $bigImgId = 'big-'+ $carouselImg.attr('id');
-		const $bigSrc = $carouselImg.attr('src').replace('mid', 'big');
-		if (!$('#' + $bigImgId).length) {
-	  	$carouselImg.attr('src', $bigSrc).on('load', function(event) {	
-					$(event.target).attr('id', $bigImgId).removeAttr('style');
-				});
-		}
-	});
+	const $carouselImg = $(event.relatedTarget).children('img');
+	const $bigImgId = 'big-'+ $carouselImg.attr('id');
+	const $bigSrc = $carouselImg.attr('src').replace('mid', 'big');
+	
+	replaceSrcImg($carouselImg, $bigImgId, $bigSrc);
+});
+	
+function replaceSrcImg($carouselImg, $imgId, $imgSrc) {
+	if (!$('#' + $imgId).length) {
+  	$carouselImg.attr('src', $imgSrc).on('load', function(event) {	
+				$(event.target).attr('id', $imgId).removeAttr('style');
+			});
+	}
+}
